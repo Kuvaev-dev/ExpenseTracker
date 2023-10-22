@@ -5,12 +5,12 @@ plugins {
 
 android {
     namespace = "dstu.kuvaiev.expensetracker"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "dstu.kuvaiev.expensetracker"
         minSdk = 21
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -38,6 +38,7 @@ android {
     }
     buildFeatures {
         compose = true
+        dataBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.4.3"

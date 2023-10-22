@@ -1,45 +1,54 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="16dp"
-    android:gravity="center">
-
-    <EditText
-        android:id="@+id/expenseAmountEditText"
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+    <data>
+        <variable
+            name="viewModel"
+            type="dstu.kuvaiev.expensetracker.viewmodel.MainViewModel" />
+    </data>
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="Введіть суму витрати..."
-        android:inputType="numberDecimal"
-        android:autofillHints="" />
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="16dp"
+        android:gravity="center">
 
-    <Button
-        android:id="@+id/addExpenseButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Додати витрату" />
+        <EditText
+            android:id="@+id/expenseAmountEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Введіть суму витрати..."
+            android:inputType="numberDecimal"
+            android:autofillHints=""
+            android:text="@={viewModel.expenseAmount}" />
 
-    <Button
-        android:id="@+id/calculateTotalButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Обчислити загальні витрати" />
+        <Button
+            android:id="@+id/addExpenseButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Додати витрату"
+            android:onClick="@{() -> viewModel.onAddExpenseClick()}" />
 
-    <TextView
-        android:id="@+id/totalExpenseTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Загальна сума витрат: 0.0"
-        android:textSize="18sp"
-        android:layout_marginTop="16dp" />
+        <Button
+            android:id="@+id/calculateTotalButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Обчислити загальні витрати"
+            android:onClick="@{() -> viewModel.onCalculateTotalClick()}" />
 
-    <TextView
-        android:id="@+id/messageTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=""
-        android:textSize="18sp"
-        android:layout_marginTop="16dp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/totalExpenseTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.totalExpenseText}"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+
+        <TextView
+            android:id="@+id/messageTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{viewModel.messageText}"
+            android:textSize="18sp"
+            android:layout_marginTop="16dp" />
+    </LinearLayout>
+</layout>
